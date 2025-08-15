@@ -35,14 +35,14 @@ function LoginPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-teal-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         {/* Back Button */}
-        <div className="mb-8">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Home
-          </Link>
+        <div className="absolute top-4 left-4">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Home
+        </Link>
         </div>
 
         {/* Login Card */}
@@ -165,22 +165,6 @@ function LoginPage() {
               </Link>
             </p>
           </div>
-        </div>
-
-        {/* Features */}
-        <div className="mt-8 grid grid-cols-3 gap-4 text-center">
-          {[
-            { icon: FileText, label: 'Smart Analysis' },
-            { icon: CheckCircle, label: 'Instant Results' },
-            { icon: Lock, label: 'Secure & Private' }
-          ].map((feature, index) => (
-            <div key={index} className="flex flex-col items-center gap-2">
-              <div className="w-10 h-10 bg-white rounded-xl shadow-md flex items-center justify-center">
-                <feature.icon className="w-5 h-5 text-blue-600" />
-              </div>
-              <span className="text-xs text-gray-600 font-medium">{feature.label}</span>
-            </div>
-          ))}
         </div>
       </div>
     </div>

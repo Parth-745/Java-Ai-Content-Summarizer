@@ -82,13 +82,13 @@ function SignupPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-teal-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         {/* Back Button */}
-        <div className="mb-8">
+        <div className="absolute top-4 left-4">
           <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Home
+              to="/"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors"
+              >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Home
           </Link>
         </div>
 
@@ -271,22 +271,6 @@ function SignupPage() {
               </Link>
             </p>
           </div>
-        </div>
-
-        {/* Benefits */}
-        <div className="mt-8 grid grid-cols-3 gap-4 text-center">
-          {[
-            { icon: FileText, label: 'Unlimited Summaries' },
-            { icon: CheckCircle, label: 'Save History' },
-            { icon: Lock, label: 'Secure Account' }
-          ].map((benefit, index) => (
-            <div key={index} className="flex flex-col items-center gap-2">
-              <div className="w-10 h-10 bg-white rounded-xl shadow-md flex items-center justify-center">
-                <benefit.icon className="w-5 h-5 text-blue-600" />
-              </div>
-              <span className="text-xs text-gray-600 font-medium">{benefit.label}</span>
-            </div>
-          ))}
         </div>
       </div>
     </div>
