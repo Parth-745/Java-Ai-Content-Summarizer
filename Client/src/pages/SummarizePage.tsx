@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { 
   ArrowLeft, FileText, Copy, Share2, Clock, User, Calendar, ExternalLink, 
   Loader2, CheckCircle, AlertCircle, Download, BookOpen, MessageSquare, 
-  List, Eye, Bookmark
+  List, Eye, Bookmark, LogIn
 } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 
 interface Article {
   url: string;
@@ -29,6 +30,7 @@ function SummarizePage() {
   const navigate = useNavigate();
   const url = searchParams.get('url');
   
+  const { user } = useAuth();
   const [isLoading, setIsLoading] = useState(true);
   const [article, setArticle] = useState<Article | null>(null);
   const [summary, setSummary] = useState<Summary | null>(null);
@@ -223,6 +225,15 @@ function SummarizePage() {
             
             {!isLoading && (
               <div className="flex items-center gap-2">
+                {!user && (
+                  <Link
+                    to="/login"
+                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    <LogIn className="w-4 h-4" />
+                    Sign In to Save
+                  </Link>
+                )}
                 <button
                   onClick={handleCopy}
                   className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors"
@@ -237,7 +248,11 @@ function SummarizePage() {
                   <Share2 className="w-4 h-4" />
                   Share
                 </button>
-                <button className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors">
+                <button
+                  disabled={!user}
+                  className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  title={!user ? "Sign in to save articles" : "Save article"}
+                >
                   <Bookmark className="w-4 h-4" />
                   Save
                 </button>
