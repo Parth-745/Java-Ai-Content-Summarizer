@@ -220,7 +220,7 @@ function SignupPage() {
               </div>
             </div>
 
-            <div className="flex items-start gap-3">
+            {/* <div className="flex items-start gap-3">
               <input
                 type="checkbox"
                 id="terms"
@@ -238,7 +238,7 @@ function SignupPage() {
                   Privacy Policy
                 </Link>
               </label>
-            </div>
+            </div> */}
 
             <button
               type="submit"
